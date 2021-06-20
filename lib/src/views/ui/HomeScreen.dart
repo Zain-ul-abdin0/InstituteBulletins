@@ -1,5 +1,10 @@
+import 'dart:convert';
+
+import 'package:InstitutesBulliten/src/businessLogic/models/school.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -9,8 +14,20 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var rating = 3.0;
 
+  Future<List<School>> fetchData() async {
+    final response = await http.get('http://192.168.0.56:3000/getAllSchool');
+    print(response);
+    if (response.statusCode == 200) {
+      List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((data) => new School.fromJson(data)).toList();
+    } else {
+      throw Exception('Unexpected error occured!');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(this.fetchData());
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFF1BBC9B),

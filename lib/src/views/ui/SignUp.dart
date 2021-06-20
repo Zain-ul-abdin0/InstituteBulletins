@@ -267,28 +267,14 @@ class _LoginScreenState extends State<SignUp> {
                 ),
               ),
             ),
-            Container(
-              alignment: Alignment.centerRight,
-              child: FlatButton(
-                child: Text(
-                  "Forgot Password?",
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFF1BBC9B),
-                  ),
-                ),
-                onPressed: () {},
-              ),
-            ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 20.0),
             Container(
               height: 50.0,
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
                 child: Text(
-                  "LOGIN".toUpperCase(),
+                  "Sign Up".toUpperCase(),
                   style: TextStyle(
                     color: Colors.white,
                   ),
