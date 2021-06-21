@@ -1,20 +1,43 @@
-import 'package:InstitutesBulliten/src/views/ui/FavouritesScreen.dart';
-import 'package:InstitutesBulliten/src/views/ui/HomeScreen.dart';
-import 'package:InstitutesBulliten/src/views/ui/InstituteScreen.dart';
-import 'package:InstitutesBulliten/src/views/ui/LoginAndSignUp.dart';
-import 'package:InstitutesBulliten/src/views/ui/MyNavigationBar.dart';
-import 'package:InstitutesBulliten/src/views/ui/SearchScreen.dart';
-import 'package:InstitutesBulliten/src/views/ui/JobApplicationForm.dart';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    hideScreen();
+  }
+
+  ///hide your splash screen
+  Future<void> hideScreen() async {
+    Future.delayed(Duration(milliseconds: 3600), () {
+      FlutterSplashScreen.hide();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginAndSignUp(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('flutter_splash_screen'),
+        ),
+        body: Center(
+          child: Text(
+            'by CrazyCodeBoy',
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
+      ),
     );
   }
 }

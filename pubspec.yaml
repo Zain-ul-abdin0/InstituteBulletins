@@ -31,7 +31,8 @@ dependencies:
   smooth_star_rating: ^1.1.1
   google_maps_flutter:
   http: 0.12.2
-  
+  sk_onboarding_screen: ^1.0.1
+  flutter_splash_screen: ^0.1.0
 
 
 
