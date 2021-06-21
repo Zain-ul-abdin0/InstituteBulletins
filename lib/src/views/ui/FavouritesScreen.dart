@@ -6,6 +6,52 @@ class FavouriteScreen extends StatefulWidget {
   _FavouriteScreenState createState() => _FavouriteScreenState();
 }
 
+class Place {
+  String imageUrl;
+  String name;
+  String country;
+
+  Place({this.imageUrl, this.name, this.country});
+}
+
+List wonders = [
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Taj-Mahal.jpg",
+      name: "DPS",
+      country: "Agra, India"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Christ-the-Redeemer.jpg",
+      name: "The Educators",
+      country: "Brazil"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2016/03/petra-jordan9.jpg",
+      name: "Cambridge Public School",
+      country: "Jordan, Iceland"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Great-Wall-of-China-view.jpg",
+      name: "Asad Grammar School",
+      country: "Macao, China"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/View-of-the-Colosseum.jpg",
+      name: "The Colosseum",
+      country: "Rome"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Machu-Picchu-around-sunset.jpg",
+      name: "Machu Picchu",
+      country: "Peru"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Chichen-Itza-at-night.jpg",
+      name: "Chichén Itzá",
+      country: "Mexico"),
+];
+
 class _FavouriteScreenState extends State<FavouriteScreen> {
   var rating = 3.0;
 
@@ -26,7 +72,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         body: ListView.builder(
             shrinkWrap: true,
             itemCount: 5,
-            itemBuilder: (ctx, int) {
+            itemBuilder: (ctx, int index) {
               return Container(
                   height: 150,
                   width: 100,
@@ -40,11 +86,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           Container(
                             width: MediaQuery.of(context).size.width / 2,
                             height: 250,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage("assets/images/School.jpeg"),
-                              ),
+                            child: Image.network(
+                              wonders[index].imageUrl,
+                              fit: BoxFit.fill,
+                              width: MediaQuery.of(context).size.width,
                             ),
                           ),
                           Padding(
@@ -55,7 +100,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 3),
                                   child: Text(
-                                    'Divisional Public School',
+                                    wonders[index].name,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 13,
@@ -75,7 +120,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 5.0),
                                       child: Text(
-                                        'Lahore, Punjab',
+                                        wonders[index].country,
                                         style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: 12,

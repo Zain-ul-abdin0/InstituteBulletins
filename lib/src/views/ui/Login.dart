@@ -1,3 +1,5 @@
+import 'package:InstitutesBulliten/src/views/ui/ForgetPassword.dart';
+import 'package:InstitutesBulliten/src/views/ui/MyNavigationBar.dart';
 import 'package:InstitutesBulliten/src/views/ui/SignUp.dart';
 import 'package:flutter/material.dart';
 
@@ -156,7 +158,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: Color(0xFF1BBC9B),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return ForgetPassword('Institutes Bulletins');
+                      },
+                    ),
+                  );
+                },
               ),
             ),
             SizedBox(height: 10.0),
@@ -175,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return SignUp();
+                        return Home();
                       },
                     ),
                   );

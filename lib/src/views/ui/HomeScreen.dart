@@ -1,10 +1,57 @@
 import 'dart:convert';
 
 import 'package:InstitutesBulliten/src/businessLogic/models/school.dart';
+import 'package:InstitutesBulliten/src/views/ui/InstituteScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+
+class Place {
+  String imageUrl;
+  String name;
+  String country;
+
+  Place({this.imageUrl, this.name, this.country});
+}
+
+List wonders = [
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Taj-Mahal.jpg",
+      name: "DPS",
+      country: "India"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Christ-the-Redeemer.jpg",
+      name: "The Educators",
+      country: "Brazil"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2016/03/petra-jordan9.jpg",
+      name: "Cambridge Public School",
+      country: "Jordan"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Great-Wall-of-China-view.jpg",
+      name: "Asad Grammar School",
+      country: "China"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/View-of-the-Colosseum.jpg",
+      name: "The Colosseum",
+      country: "Rome"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Machu-Picchu-around-sunset.jpg",
+      name: "Machu Picchu",
+      country: "Peru"),
+  Place(
+      imageUrl:
+          "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/02/Chichen-Itza-at-night.jpg",
+      name: "Chichén Itzá",
+      country: "Mexico"),
+];
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -67,42 +114,51 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (BuildContext context, int index) => Container(
                       width: MediaQuery.of(context).size.width / 2,
                       height: 50,
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
+                      child: GestureDetector(
+                        onTap: () => {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return InstituteScreen();
+                              },
+                            ),
+                          )
+                        },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 100,
+                                child: Image.network(
+                                  wonders[index].imageUrl,
                                   fit: BoxFit.fill,
-                                  image:
-                                      AssetImage("assets/images/School.jpeg"),
+                                  width: MediaQuery.of(context).size.width,
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: Text(
-                                'DPS',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              SizedBox(
+                                height: 5,
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5.0),
-                              child: Text(
-                                'Lahore, Punjab',
-                                style: TextStyle(color: Colors.grey),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Text(
+                                  wonders[index].name,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5.0),
+                                child: Text(
+                                  wonders[index].country,
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -124,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: 2,
-                  itemBuilder: (ctx, int) {
+                  itemBuilder: (ctx, int index) {
                     return Container(
                       height: 350,
                       child: Card(
@@ -138,13 +194,19 @@ class _HomeScreenState extends State<HomeScreen> {
                               Container(
                                 width: MediaQuery.of(context).size.width,
                                 height: 250,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image:
-                                        AssetImage("assets/images/School.jpeg"),
-                                  ),
+                                child: Image.network(
+                                  wonders[index].imageUrl,
+                                  fit: BoxFit.fill,
+                                  width: MediaQuery.of(context).size.width,
                                 ),
+
+                                // decoration: BoxDecoration(
+                                //   image: DecorationImage(
+                                //     fit: BoxFit.fill,
+                                //     image:
+                                //         AssetImage("assets/images/School.jpeg"),
+                                //   ),
+                                // ),
                               ),
                               SizedBox(
                                 height: 5,
@@ -157,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'Divisional Public School ',
+                                        wonders[index].name,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Color(0xFF1BBC9B),

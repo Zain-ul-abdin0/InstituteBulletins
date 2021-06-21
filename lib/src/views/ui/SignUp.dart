@@ -1,3 +1,4 @@
+import 'package:InstitutesBulliten/src/views/ui/MyNavigationBar.dart';
 import 'package:InstitutesBulliten/src/views/ui/SignUp.dart';
 import 'package:flutter/material.dart';
 
@@ -283,7 +284,7 @@ class _LoginScreenState extends State<SignUp> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return SignUp();
+                        return Home();
                       },
                     ),
                   );

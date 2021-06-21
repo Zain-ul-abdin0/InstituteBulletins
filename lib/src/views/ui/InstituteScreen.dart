@@ -1,3 +1,4 @@
+import 'package:InstitutesBulliten/src/views/ui/AdmissionForm.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -25,7 +26,9 @@ class _InstituteScreenState extends State<InstituteScreen> {
         title: Text("Divistional Public School"),
         centerTitle: true,
         leading: GestureDetector(
-          onTap: () {/* Write listener code here */},
+          onTap: () {
+            Navigator.pop(context);
+          },
           child: Icon(
             Icons.arrow_back, // add custom icons also
           ),
@@ -173,7 +176,102 @@ class _InstituteScreenState extends State<InstituteScreen> {
               ],
             ),
             SizedBox(
-              height: 30,
+              height: 20,
+            ),
+            Center(
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.02,
+                height: 200,
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 5),
+                          child: Text(
+                            "Admissions",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Color(0xFF1BBC9B),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 30),
+                          child: Row(
+                            children: [
+                              Text("(11 Dec - 21 Dec) ",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  )),
+                              Text(
+                                "OPEN",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.green,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: Text("Availability : 53 Seats",
+                          style: TextStyle(
+                            color: Colors.grey,
+                          )),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child:
+                          Text("Stats : 14 people applied in the past 1 month",
+                              style: TextStyle(
+                                color: Colors.grey,
+                              )),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      child: Text("Fee(On Submission) : 20,000(every 3 months)",
+                          style: TextStyle(
+                            color: Colors.grey,
+                          )),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 50.0,
+                      margin: EdgeInsets.only(left: 5),
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Text(
+                          "Admission Form".toUpperCase(),
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return AdmissionForm();
+                              },
+                            ),
+                          );
+                        },
+                        color: Color(0xFF1BBC9B),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

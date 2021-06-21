@@ -20,7 +20,9 @@ class _AdmissionFormState extends State<AdmissionForm> {
           title: Text("Addmission Form"),
           centerTitle: true,
           leading: GestureDetector(
-            onTap: () {/* Write listener code here */},
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: Icon(
               Icons.arrow_back, // add custom icons also
             ),

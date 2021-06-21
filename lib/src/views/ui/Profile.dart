@@ -167,7 +167,7 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               subtitle: Text(
-                "Female",
+                "Male",
               ),
             ),
             ListTile(
